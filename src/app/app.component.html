@@ -1,19 +1,19 @@
-<div class="w-vw flex justify-center px-4">
+<div class="w-vw flex justify-center px-4 bg-green-50">
 
   <div class="contex w-3/4 mb-6">
 
     <!-- theme -->
     <div
-      class=" border border-gray-200 dark:bg-gray-800 dark:border-gray-700 flex items-center justify-between p-3 rounded-lg shadow-sm mt-6">
+      class="bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 flex items-center justify-between p-3 rounded-lg shadow-sm mt-6">
       <img alt="logo" class="p-1 " src="assets/images/logo.svg" />
       <img alt="theme" src="assets/images/icon-moon.svg" class="p-3 rounded-lg bg-gray-100" />
     </div>
 
 
     <!-- buttons -->
-    <div class="flex items-center justify-between my-6">
-      <h2 class="text-xl font-semibold text-slate-800">Extensions List</h2>
-      <div class="">
+    <div class="grid grid-cols-1 mx-auto lg:mx-0 md:flex md:items-center md:justify-between my-6">
+      <h2 class="mx-auto lg:mx-0 mb-6 md:mb-0 text-xl font-semibold text-slate-800">Extensions List</h2>
+      <div class="mx-auto lg:mx-0">
         <app-button [name]="'All'" />
         <app-button [name]="'Active'" />
         <app-button [name]="'Inactive'" />
