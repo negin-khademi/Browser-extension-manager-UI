@@ -1,16 +1,16 @@
 <div class="flex w-full p-4 max-w-lg flex-col  bg-white shadow-sm border border-slate-200 my-6 rounded-xl">
   <div class="flex gap-4 text-slate-800">
-    <img src="assets/images/logo-devlens.svg" alt="DevLens"
+    <img [src]="imagePath" [alt]="card.name"
       class="relative inline-block h-[58px] w-[58px] object-cover object-center" />
     <div class="flex w-full flex-col">
       <div class="flex items-center justify-between">
         <h5 class="text-xl font-semibold text-slate-800">
-          DevLens
+          {{card.name}}
         </h5>
       </div>
       <p class="text-base text-slate-600 font-light leading-normal
       ">
-        Quickly inspect page layouts and visualize element boundaries.
+        {{card.description}}
       </p>
     </div>
   </div>

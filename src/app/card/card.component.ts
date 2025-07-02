@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
 	selector: "app-card",
@@ -6,4 +6,15 @@ import { Component } from "@angular/core";
 	templateUrl: "./card.component.html",
 	styleUrl: "./card.component.scss",
 })
-export class CardComponent {}
+export class CardComponent {
+	@Input({ required: true }) card!: {
+		logo: string;
+		name: string;
+		description: string;
+		isActive: boolean;
+	};
+
+	get imagePath() {
+		return this.card.logo;
+	}
+}
