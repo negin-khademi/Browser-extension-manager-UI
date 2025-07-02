@@ -1,8 +1,16 @@
 <div class="container mx-auto px-4">
 
+  <!-- theme -->
+  <div
+    class="bg-black border border-gray-200 dark:bg-gray-800 dark:border-gray-700 flex items-center justify-between p-3 rounded-lg shadow-sm">
+    <img class="p-1 " src="assets/images/logo.svg" />
+    <img src="assets/images/icon-sun.svg" />
+  </div>
+
+
   <!-- buttons -->
   <div class="flex items-center justify-between mt-3">
-    <h2>Extensions List</h2>
+    <h2 class="text-xl font-semibold text-slate-800">Extensions List</h2>
     <div class="">
       <app-button [name]="'All'" />
       <app-button [name]="'Active'" />
