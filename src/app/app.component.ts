@@ -1,6 +1,7 @@
+import { CardComponent } from "./card/card.component";
 import { Component } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
-import { CardComponent } from "./card/card.component";
+import data from "../data.json";
 
 @Component({
 	selector: "app-root",
@@ -10,4 +11,5 @@ import { CardComponent } from "./card/card.component";
 })
 export class AppComponent {
 	title = "Browser_extension_managerUI";
+	data = data;
 }
