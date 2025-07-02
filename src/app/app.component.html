@@ -1,4 +1,12 @@
 <div class="container mx-auto px-4">
+  <div class="flex items-center justify-between">
+    <h2>Extensions List</h2>
+    <div class="">
+      <app-button [name]="'All'" />
+      <app-button [name]="'Active'" />
+      <app-button [name]="'Inactive'" />
+    </div>
+  </div>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     @for(card of data;track card.name){
     <app-card [card]="card" />
