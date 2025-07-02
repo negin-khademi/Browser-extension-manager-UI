@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { CardComponent } from "./card/card.component";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+	selector: "app-root",
+	imports: [RouterOutlet, CardComponent],
+	templateUrl: "./app.component.html",
+	styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  title = 'Browser_extension_managerUI';
+	title = "Browser_extension_managerUI";
 }
