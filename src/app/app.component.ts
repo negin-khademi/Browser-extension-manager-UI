@@ -1,4 +1,4 @@
-import { Component, effect, signal } from "@angular/core";
+import { Component, signal } from "@angular/core";
 
 import { ButtonComponent } from "./shared/button/button.component";
 import { CardComponent } from "./card/card.component";
@@ -15,25 +15,11 @@ export class AppComponent {
 	title = "Browser_extension_managerUI";
 	data = data;
 
-	darkMode = signal<boolean>(false);
+	theme = signal<"light" | "dark">("light");
 
-	constructor() {
-		// Load theme on startup
-		const saved = localStorage.getItem("theme");
-		if (saved === "dark") {
-			this.darkMode.set(true);
-		}
-		effect(() => {
-			const isDark = this.darkMode();
-			const root = document.documentElement;
+	onThemeToggle() {
+		this.theme.set(this.theme() === "light" ? "dark" : "light");
 
-			if (isDark) {
-				root.classList.add("dark");
-				localStorage.setItem("theme", "dark");
-			} else {
-				root.classList.remove("dark");
-				localStorage.setItem("theme", "light");
-			}
-		});
+		document.documentElement.classList.toggle("dark");
 	}
 }
