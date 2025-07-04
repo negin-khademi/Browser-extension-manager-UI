@@ -1,14 +1,15 @@
-<div class="flex w-full p-4 max-w-lg flex-col bg-white shadow-sm border border-slate-200 rounded-xl">
+<div
+  class="flex w-full p-4 max-w-lg flex-col bg-white shadow-sm border border-slate-200 rounded-xl dark:bg-neutral-700">
   <div class="flex gap-4 text-slate-800">
     <img [src]="imagePath" [alt]="card.name"
       class="relative inline-block h-[58px] w-[58px] object-cover object-center" />
     <div class="flex w-full flex-col">
       <div class="flex items-center justify-between">
-        <h5 class="text-base font-semibold text-slate-800">
+        <h5 class="text-base font-semibold text-slate-800 dark:text-neutral-100">
           {{card.name}}
         </h5>
       </div>
-      <p class="text-base text-slate-600 font-light leading-normal h-16 lg:h-24 xl:16 mb-6 md:mb-0
+      <p class="text-base text-slate-600 font-light leading-normal h-16 lg:h-24 xl:16 mb-6 md:mb-0 dark:text-neutral-300
       ">
         {{card.description}}
       </p>

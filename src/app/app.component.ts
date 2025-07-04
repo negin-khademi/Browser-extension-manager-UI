@@ -19,7 +19,6 @@ export class AppComponent {
 
 	onThemeToggle() {
 		this.theme.set(this.theme() === "light" ? "dark" : "light");
-
 		document.documentElement.classList.toggle("dark");
 	}
 }
