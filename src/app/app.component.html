@@ -33,7 +33,7 @@
     <!-- Extensions cards -->
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       @for(card of showList;track card.name){
-      <app-card [card]="card" />
+      <app-card [card]="card" (select)="onDeleteExtension($event)" />
       }
     </div>
 

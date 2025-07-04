@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 import { ButtonComponent } from "../shared/button/button.component";
 
@@ -15,8 +15,13 @@ export class CardComponent {
 		description: string;
 		isActive: boolean;
 	};
+	@Output() select = new EventEmitter();
 
 	get imagePath() {
 		return this.card.logo;
+	}
+
+	onRemoveExtension() {
+		this.select.emit(this.card.name);
 	}
 }

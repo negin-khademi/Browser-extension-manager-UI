@@ -11,7 +11,6 @@ export class ButtonComponent {
 	@Output() select = new EventEmitter();
 
 	onClick() {
-		this.select.emit();
-		console.log("hello from component button");
+		this.select.emit(this.name);
 	}
 }
