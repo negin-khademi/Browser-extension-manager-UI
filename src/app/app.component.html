@@ -24,15 +24,15 @@
         Extensions List
       </h1>
       <div class="mx-auto lg:mx-0">
-        <app-button [name]="'All'" />
-        <app-button [name]="'Active'" />
-        <app-button [name]="'Inactive'" />
+        <app-button [name]="'All'" (select)="onAllExtension()" />
+        <app-button [name]="'Active'" (select)="onctiveExtensions()" />
+        <app-button [name]="'Inactive'" (select)="onInActiveExtensions()" />
       </div>
     </div>
 
     <!-- Extensions cards -->
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      @for(card of data;track card.name){
+      @for(card of showList;track card.name){
       <app-card [card]="card" />
       }
     </div>
