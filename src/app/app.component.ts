@@ -2,12 +2,13 @@ import { Component, OnInit, signal } from "@angular/core";
 
 import { ButtonComponent } from "./shared/button/button.component";
 import { CardComponent } from "./card/card.component";
+import { CommonModule } from "@angular/common";
 import { RouterOutlet } from "@angular/router";
 import data from "../data.json";
 
 @Component({
 	selector: "app-root",
-	imports: [RouterOutlet, CardComponent, ButtonComponent],
+	imports: [RouterOutlet, CardComponent, ButtonComponent, CommonModule],
 	templateUrl: "./app.component.html",
 	styleUrl: "./app.component.scss",
 })
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
 	showList: any[] = [];
 	activeList: any[] = [];
 	InActiveList: any[] = [];
+	selectedStatus: "all" | "active" | "inactive" = "all";
 
 	ngOnInit(): void {
 		this.onAllExtension();
@@ -26,10 +28,12 @@ export class AppComponent implements OnInit {
 	// show all extension
 	onAllExtension() {
 		this.showList = data;
+		this.selectedStatus = "all";
 	}
 
 	// filter active extensions
 	onctiveExtensions() {
+		this.selectedStatus = "active";
 		for (let obj of data) {
 			if (obj.isActive === true) {
 				this.activeList.push(obj);
@@ -37,11 +41,11 @@ export class AppComponent implements OnInit {
 		}
 		this.showList = this.activeList;
 		this.activeList = [];
-		console.log(this.activeList);
 	}
 
 	// filter InActive extensions
 	onInActiveExtensions() {
+		this.selectedStatus = "inactive";
 		for (let obj of data) {
 			if (obj.isActive === false) {
 				this.InActiveList.push(obj);
@@ -49,7 +53,6 @@ export class AppComponent implements OnInit {
 		}
 		this.showList = this.InActiveList;
 		this.InActiveList = [];
-		console.log(this.InActiveList);
 	}
 
 	theme = signal<"light" | "dark">("light");
