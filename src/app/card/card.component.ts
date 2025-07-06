@@ -16,9 +16,20 @@ export class CardComponent {
 		isActive: boolean;
 	};
 	@Output() select = new EventEmitter();
+	@Output() isChecked = new EventEmitter();
 
 	get imagePath() {
 		return this.card.logo;
+	}
+
+	onChangeToggle(event: Event) {
+		console.log("event", event);
+
+		const checked = (event.target as HTMLInputElement).checked;
+		this.card.isActive = checked; // update local card status
+		console.log(checked);
+		// this.isChecked.emit({ name: this.card.name, isActive: checked }); // emit updated info
+		// console.log("Toggle changed in card:", this.card.name, checked);
 	}
 
 	onRemoveExtension() {

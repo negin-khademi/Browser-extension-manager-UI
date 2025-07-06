@@ -52,6 +52,10 @@ export class AppComponent implements OnInit {
 		this.showList = this.showList.filter((item) => item.name !== name);
 	}
 
+	onCheckedToggle(status: any) {
+		console.log("hello from toggle in APP");
+	}
+
 	// Toggles between light and dark themes.
 	// Updates the reactive `theme` signal and applies/removes the `dark` class on <html> element,
 	// which activates Tailwind's dark mode styles.
