@@ -4,7 +4,11 @@
     <div
       class="bg-white border border-gray-200 dark:bg-neutral-800 dark:border-gray-700 flex items-center justify-between p-3 rounded-lg shadow-sm mt-6"
     >
-      <img alt="logo" class="p-1" src="assets/images/logo.svg" />
+      <img
+        alt="logo"
+        class="p-1 dark:"
+        [src]="theme() === 'light' ? 'assets/images/logo.svg' : 'assets/images/logo-light.svg'"
+      />
       <button (click)="onThemeToggle()">
         @if(theme()==="light"){
         <img alt="theme" src="assets/images/icon-moon.svg" class="p-3 rounded-lg bg-neutral-200" />
