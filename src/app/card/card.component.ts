@@ -1,27 +1,27 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, inject, Input, Output } from "@angular/core";
 
 import { ButtonComponent } from "../shared/button/button.component";
+import { ExtensionConfig } from "../shared/model/extension.model";
+import { ExtensionService } from "../shared/services/extension.service";
 
 @Component({
-	selector: "app-card",
-	imports: [ButtonComponent],
-	templateUrl: "./card.component.html",
-	styleUrl: "./card.component.scss",
+  selector: "app-card",
+  imports: [ButtonComponent],
+  templateUrl: "./card.component.html",
+  styleUrl: "./card.component.scss",
 })
 export class CardComponent {
-	@Input({ required: true }) card!: {
-		logo: string;
-		name: string;
-		description: string;
-		isActive: boolean;
-	};
-	@Output() select = new EventEmitter();
+  @Input({ required: true }) card!: ExtensionConfig;
 
-	get imagePath() {
-		return this.card.logo;
-	}
+  extensionsService = inject(ExtensionService);
 
-	onRemoveExtension() {
-		this.select.emit(this.card.name);
-	}
+  get imagePath() {
+    return this.card.logo;
+  }
+
+  onToggleExtension(event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.card.isActive = checked; // update local card status
+    this.extensionsService.updateExtensionStatus(this.card.name, checked);
+  }
 }
