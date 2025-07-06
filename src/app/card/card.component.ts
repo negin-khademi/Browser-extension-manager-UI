@@ -24,4 +24,8 @@ export class CardComponent {
     this.card.isActive = checked; // update local card status
     this.extensionsService.updateExtensionStatus(this.card.name, checked);
   }
+
+  onRemoveExtension() {
+    this.extensionsService.removeExtension(this.card.name);
+  }
 }

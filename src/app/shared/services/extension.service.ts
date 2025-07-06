@@ -18,4 +18,13 @@ export class ExtensionService {
       this.extensionsList.set(extensions);
     }
   }
+
+  removeExtension(name: string) {
+    const extensions = this.extensionsList();
+    const index = extensions.findIndex((ext) => ext.name === name);
+    if (index !== -1) {
+      extensions.splice(index, 1);
+      this.extensionsList.set(extensions);
+    }
+  }
 }
