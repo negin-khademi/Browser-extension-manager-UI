@@ -2,12 +2,13 @@ import { Component, OnInit, signal } from "@angular/core";
 
 import { ButtonComponent } from "./shared/button/button.component";
 import { CardComponent } from "./card/card.component";
+import { CommonModule } from "@angular/common";
 import { RouterOutlet } from "@angular/router";
 import data from "../data.json";
 
 @Component({
 	selector: "app-root",
-	imports: [RouterOutlet, CardComponent, ButtonComponent],
+	imports: [RouterOutlet, CardComponent, ButtonComponent, CommonModule],
 	templateUrl: "./app.component.html",
 	styleUrl: "./app.component.scss",
 })
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
 	allList: any[] = [];
 	activeList: any[] = [];
 	InActiveList: any[] = [];
+	selectedStatus: "all" | "active" | "inactive" = "all";
 
 	theme = signal<"light" | "dark">("light");
 	ngOnInit(): void {
@@ -28,16 +30,19 @@ export class AppComponent implements OnInit {
 	}
 	// show all extension
 	onAllExtension() {
+		this.selectedStatus = "all";
 		this.showList = [...this.masterList];
 	}
 
 	// filter active extensions
 	onctiveExtensions() {
+		this.selectedStatus = "active";
 		this.showList = this.masterList.filter((item) => item.isActive === true);
 	}
 
 	// filter InActive extensions
 	onInActiveExtensions() {
+		this.selectedStatus = "inactive";
 		this.showList = this.masterList.filter((item) => item.isActive === false);
 	}
 
