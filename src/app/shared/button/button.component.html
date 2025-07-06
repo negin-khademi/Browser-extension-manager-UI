@@ -1,4 +1,12 @@
-<button (click)="onClick()" type="button" [ngClass]="[
+<button
+  (click)="onClick()"
+  type="button"
+  [ngClass]="[
     'py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-none rounded-full border hover:bg-red-700 hover:text-white focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 active:bg-red-400 active:text-white',
-    active ? 'bg-red-700 text-white border-red-400' : 'bg-white text-gray-900 border-gray-200 dark:bg-neutral-800 dark:text-neutral-300'
-  ]">{{name}}</button>
+    active
+      ? 'bg-red-700 text-white border-red-400'
+      : 'bg-white text-gray-900 border-gray-200 dark:bg-neutral-blue-800 dark:text-neutral-blue-300'
+  ]"
+>
+  {{ name }}
+</button>
