@@ -1,62 +1,61 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, effect, inject, OnInit, signal } from "@angular/core";
 
 import { ButtonComponent } from "./shared/button/button.component";
 import { CardComponent } from "./card/card.component";
 import { CommonModule } from "@angular/common";
 import { RouterOutlet } from "@angular/router";
-import data from "../data.json";
+import { ExtensionService } from "./shared/services/extension.service";
+import { ExtensionConfig } from "./shared/model/extension.model";
 
 @Component({
-	selector: "app-root",
-	imports: [RouterOutlet, CardComponent, ButtonComponent, CommonModule],
-	templateUrl: "./app.component.html",
-	styleUrl: "./app.component.scss",
+  selector: "app-root",
+  imports: [RouterOutlet, CardComponent, ButtonComponent, CommonModule],
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent implements OnInit {
-	title = "Browser_extension_managerUI";
-	originalData = data;
-	masterList: any[] = [];
-	showList: any[] = [];
+  title = "Browser_extension_managerUI";
 
-	allList: any[] = [];
-	activeList: any[] = [];
-	InActiveList: any[] = [];
-	selectedStatus: "all" | "active" | "inactive" = "all";
+  selectedStatus: "all" | "active" | "inactive" = "all";
+  extensionsList!: ExtensionConfig[];
 
-	theme = signal<"light" | "dark">("light");
-	ngOnInit(): void {
-		this.masterList = [...this.originalData]; // clone once
-		this.showList = [...this.masterList]; // display all initially
-	}
-	// show all extension
-	onAllExtension() {
-		this.selectedStatus = "all";
-		this.showList = [...this.masterList];
-	}
+  theme = signal<"light" | "dark">("light");
 
-	// filter active extensions
-	onctiveExtensions() {
-		this.selectedStatus = "active";
-		this.showList = this.masterList.filter((item) => item.isActive === true);
-	}
+  extenstionsService = inject(ExtensionService);
 
-	// filter InActive extensions
-	onInActiveExtensions() {
-		this.selectedStatus = "inactive";
-		this.showList = this.masterList.filter((item) => item.isActive === false);
-	}
+  constructor() {
+    effect(() => {
+      this.extensionsList = this.extenstionsService.extensionsList();
+    });
+  }
 
-	// Delete item from master list, then re-apply current filter
-	onDeleteExtension(name: string) {
-		this.masterList = this.masterList.filter((item) => item.name !== name);
-		this.showList = this.showList.filter((item) => item.name !== name);
-	}
+  ngOnInit(): void {}
 
-	// Toggles between light and dark themes.
-	// Updates the reactive `theme` signal and applies/removes the `dark` class on <html> element,
-	// which activates Tailwind's dark mode styles.
-	onThemeToggle() {
-		this.theme.set(this.theme() === "light" ? "dark" : "light");
-		document.documentElement.classList.toggle("dark");
-	}
+  // show all extension
+  onAllExtension() {
+    this.selectedStatus = "all";
+  }
+
+  // filter active extensions
+  onActiveExtensions() {
+    this.selectedStatus = "active";
+  }
+
+  // filter InActive extensions
+  onInActiveExtensions() {
+    this.selectedStatus = "inactive";
+  }
+
+  // Delete item from master list, then re-apply current filter
+  onDeleteExtension(name: string) {
+    this.extensionsList = this.extensionsList.filter((item) => item.name !== name);
+  }
+
+  // Toggles between light and dark themes.
+  // Updates the reactive `theme` signal and applies/removes the `dark` class on <html> element,
+  // which activates Tailwind's dark mode styles.
+  onThemeToggle() {
+    this.theme.set(this.theme() === "light" ? "dark" : "light");
+    document.documentElement.classList.toggle("dark");
+  }
 }
