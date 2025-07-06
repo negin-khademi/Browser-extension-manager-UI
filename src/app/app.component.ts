@@ -22,8 +22,6 @@ export class AppComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.onAllExtension();
-		// this.onctiveExtensions();
-		// this.onInActiveExtensions();
 	}
 	// show all extension
 	onAllExtension() {

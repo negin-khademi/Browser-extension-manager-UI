@@ -24,10 +24,9 @@
         Extensions List
       </h1>
       <div class="mx-auto lg:mx-0">
-        <app-button [name]="'All'" (select)="onAllExtension()" [ngClass]="{'active':selectedStatus==='all'}" />
-        <app-button [name]="'Active'" (select)="onctiveExtensions()" [ngClass]="{'active':selectedStatus==='active'}" />
-        <app-button [name]="'Inactive'" (select)="onInActiveExtensions()"
-          [ngClass]="{'active': selectedStatus === 'inactive'}" />
+        <app-button [name]="'All'" (select)="onAllExtension()" [active]="selectedStatus==='all'" />
+        <app-button [name]="'Active'" (select)="onctiveExtensions()" [active]="selectedStatus==='active'" />
+        <app-button [name]="'Inactive'" (select)="onInActiveExtensions()" [active]="selectedStatus==='inactive'" />
       </div>
     </div>
 
