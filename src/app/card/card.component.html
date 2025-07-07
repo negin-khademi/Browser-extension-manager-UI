@@ -1,23 +1,16 @@
 <div
-  class="flex w-full p-4 max-w-lg flex-col bg-white shadow-sm border border-slate-200 rounded-xl dark:bg-neutral-700"
->
+  class="flex w-full p-4 max-w-lg flex-col bg-white shadow-sm border border-slate-200 rounded-xl dark:bg-neutral-blue-700">
   <div class="flex gap-4 text-slate-800">
-    <img
-      [src]="imagePath"
-      [alt]="card.name"
-      class="relative inline-block h-[58px] w-[58px] object-cover object-center"
-    />
+    <img [src]="imagePath" [alt]="card.name"
+      class="relative inline-block h-[58px] w-[58px] object-cover object-center" />
     <div class="flex w-full flex-col">
       <div class="flex items-center justify-between">
-        <h5
-          class="text-base font-semibold text-slate-800 dark:text-neutral-100"
-        >
+        <h5 class="text-base font-semibold text-slate-800 dark:text-neutral-blue-100">
           {{ card.name }}
         </h5>
       </div>
       <p
-        class="text-base text-slate-600 font-light leading-normal h-16 lg:h-24 xl:16 mb-6 md:mb-0 dark:text-neutral-300"
-      >
+        class="text-base text-slate-600 font-light leading-normal h-16 lg:h-24 xl:16 mb-6 md:mb-0 dark:text-neutral-blue-300">
         {{ card.description }}
       </p>
     </div>
@@ -27,15 +20,10 @@
     <app-button [name]="'Remove'" (select)="onRemoveExtension()" />
 
     <label class="inline-flex items-center cursor-pointer">
-      <input
-        type="checkbox"
-        value=""
-        class="sr-only peer"
-        [checked]="card.isActive"
-      />
+      <input type="checkbox" value="" class="sr-only peer" [checked]="card.isActive" />
       <div
-        class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600 dark:peer-checked:bg-red-600 hover:peer-checked:bg-red-500"
-      ></div>
+        class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600 dark:peer-checked:bg-red-600 hover:peer-checked:bg-red-500">
+      </div>
     </label>
   </div>
 </div>
