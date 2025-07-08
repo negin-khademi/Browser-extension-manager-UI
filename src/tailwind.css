@@ -12,15 +12,15 @@
   --layout-desktop-width: 1440px;
 
   /* Neutral colors */
-  --neutral-blue-900: hsl(227, 75%, 14%);
-  --neutral-blue-800: hsl(224, 26%, 16%);
-  --neutral-blue-800: hsl(224, 26%, 16%);
-  --neutral-blue-700: hsl(225, 23%, 24%);
-  --neutral-blue-600: hsl(226, 11%, 37%);
-  --neutral-blue-300: hsl(0, 0%, 78%);
-  --neutral-blue-200: hsl(217, 61%, 90%);
-  --neutral-blue-100: hsl(0, 0%, 93%);
-  --neutral-blue-0: hsl(200, 60%, 99%);
+  --neutral-900: hsl(227, 75%, 14%);
+  --neutral-800: hsl(224, 26%, 16%);
+  --neutral-800: hsl(224, 26%, 16%);
+  --neutral-700: hsl(225, 23%, 24%);
+  --neutral-600: hsl(226, 11%, 37%);
+  --neutral-300: hsl(0, 0%, 78%);
+  --neutral-200: hsl(217, 61%, 90%);
+  --neutral-100: hsl(0, 0%, 93%);
+  --neutral-0: hsl(200, 60%, 99%);
 
   /* Red colors */
   --red-400: hsl(3, 86%, 64%);
