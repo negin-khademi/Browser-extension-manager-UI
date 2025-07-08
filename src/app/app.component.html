@@ -27,8 +27,16 @@
 
     <!-- Extensions cards -->
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      @for(card of showList;track card.name){
-      <app-card [card]="card" (select)="onDeleteExtension($event)" />
+      @for(extension of extensionList;track extension.name){
+      @if(extension.isActive && selectedStatus === 'active' ){
+      <app-card [card]="extension" (select)="onDeleteExtension($event)" />
+      }
+      @else if(!extension.isActive && selectedStatus === 'inactive' ){
+      <app-card [card]="extension" (select)="onDeleteExtension($event)" />
+      }
+      @else if( selectedStatus === 'all' ){
+      <app-card [card]="extension" (select)="onDeleteExtension($event)" />
+      }
       }
     </div>
   </div>
