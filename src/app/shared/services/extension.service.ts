@@ -9,4 +9,13 @@ import data from "./../../../data.json";
 export class ExtensionService {
   extensionList = signal<ExtensionConfig[]>(data);
   constructor() {}
+
+  updateExtensionStatus(name: string, isActive: boolean) {
+    const extensions = this.extensionList();
+    const index = extensions.findIndex((ext) => ext.name === name);
+    if (index !== -1) {
+      extensions[index].isActive = isActive;
+      this.extensionList.set(extensions);
+    }
+  }
 }
