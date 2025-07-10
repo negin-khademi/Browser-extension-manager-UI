@@ -1,44 +1,70 @@
-<div class="w-vw min-h-dvh flex justify-center px-4 lg:px-4 bg-gradient-light dark:bg-gradient-dark">
+<div
+  class="w-vw min-h-dvh flex justify-center px-4 lg:px-4 bg-gradient-light dark:bg-gradient-dark"
+>
   <div class="contex w-full lg:w-3/4 mb-6">
     <!-- theme -->
     <div
-      class="bg-white border border-gray-200 dark:bg-neutral-blue-800 dark:border-gray-700 flex items-center justify-between p-3 rounded-lg shadow-sm mt-6">
-      <img alt="logo" class="p-1" [src]="theme()==='light'?'assets/images/logo.svg':'assets/images/logo-light.svg'" />
+      class="bg-white border border-gray-200 dark:bg-neutral-blue-800 dark:border-gray-700 flex items-center justify-between p-3 rounded-lg shadow-sm mt-6"
+    >
+      <img
+        alt="logo"
+        class="p-1"
+        [src]="theme() === 'light' ? 'assets/images/logo.svg' : 'assets/images/logo-light.svg'"
+      />
 
       <button (click)="onThemeToggle()">
         @if(theme()==="light"){
-        <img alt="theme" src="assets/images/icon-moon.svg" class="p-3 rounded-lg bg-neutral-blue-200" />
+        <img
+          alt="theme"
+          src="assets/images/icon-moon.svg"
+          class="p-3 rounded-lg bg-neutral-blue-200"
+        />
         } @if(theme()==="dark"){
-        <img alt="theme" src="assets/images/icon-sun.svg" class="p-3 rounded-lg bg-neutral-blue-700" />
+        <img
+          alt="theme"
+          src="assets/images/icon-sun.svg"
+          class="p-3 rounded-lg bg-neutral-blue-700"
+        />
         }
       </button>
     </div>
 
     <!-- buttons -->
     <div class="grid grid-cols-1 mx-auto lg:mx-0 md:flex md:items-center md:justify-between my-6">
-      <h1 class="font-noto mx-auto lg:mx-0 mb-6 md:mb-0 text-[36px] font-bold text-slate-800 dark:text-white">
+      <h1
+        class="font-noto mx-auto lg:mx-0 mb-6 md:mb-0 text-[36px] font-bold text-slate-800 dark:text-white"
+      >
         Extensions List
       </h1>
       <div class="mx-auto lg:mx-0">
-        <app-button [name]="'All'" (select)="onAllExtension()" [active]="selectedStatus === 'all'" />
-        <app-button [name]="'Active'" (select)="onctiveExtensions()" [active]="selectedStatus === 'active'" />
-        <app-button [name]="'Inactive'" (select)="onInActiveExtensions()" [active]="selectedStatus === 'inactive'" />
+        <app-button
+          [name]="'All'"
+          (select)="onAllExtension()"
+          [active]="selectedStatus === 'all'"
+        />
+        <app-button
+          [name]="'Active'"
+          (select)="onctiveExtensions()"
+          [active]="selectedStatus === 'active'"
+        />
+        <app-button
+          [name]="'Inactive'"
+          (select)="onInActiveExtensions()"
+          [active]="selectedStatus === 'inactive'"
+        />
       </div>
     </div>
 
     <!-- Extensions cards -->
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      @for(extension of extensionList;track extension.name){
-      @if(extension.isActive && selectedStatus === 'active' ){
+      @for(extension of extensionList;track extension.name){ @if(extension.isActive &&
+      selectedStatus === 'active' ){
       <app-card [card]="extension" (select)="onDeleteExtension($event)" />
-      }
-      @else if(!extension.isActive && selectedStatus === 'inactive' ){
+      } @else if(!extension.isActive && selectedStatus === 'inactive' ){
       <app-card [card]="extension" (select)="onDeleteExtension($event)" />
-      }
-      @else if( selectedStatus === 'all' ){
+      } @else if( selectedStatus === 'all' ){
       <app-card [card]="extension" (select)="onDeleteExtension($event)" />
-      }
-      }
+      } }
     </div>
   </div>
 </div>
