@@ -1,4 +1,20 @@
-// Handlers
+const fs = require("fs");
+
+// Read extensions data
+const extensions = JSON.parse(
+  fs.readFileSync(`${__dirname}/../dev-data/extensions.json`, "utf-8")
+);
+
+exports.checkID = (req, res, next, val) => {
+  if (isNaN(val) || val < 0 || val >= extensions.length) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Extension not found",
+    });
+  }
+  next();
+};
+
 module.exports.getAllExtensions = (req, res) => {
   res.status(200).json({
     status: "success",
